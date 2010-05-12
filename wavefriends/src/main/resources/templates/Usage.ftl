@@ -1,0 +1,1 @@
+To start using Wave Friends please add wavefriends@appspot.com to a new empty wave.

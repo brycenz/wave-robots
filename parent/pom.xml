@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.wavenz.robots</groupId>
+    <artifactId>com.wavenz.robots.parent</artifactId>
+    <packaging>pom</packaging>
+    <version>0.0.4-SNAPSHOT</version>
+
+    <name>WaveNZ Robots Base Parent</name>
+
+    <prerequisites>
+        <maven>2.0.7</maven>
+    </prerequisites>
+
+    <scm>
+        <developerConnection>scm:svn:file:///home/bryce/svn/wavenzrobots/trunk</developerConnection>
+    </scm>
+
+    <distributionManagement>
+        <repository>
+            <id>wavenz-robots</id>
+            <name>wavenz-robots</name>
+            <url>file:///home/bryce/projects-release</url>
+        </repository>
+    </distributionManagement>
+
+    <repositories>
+        <repository>
+            <id>google-gson</id>
+            <url>http://google-gson.googlecode.com/svn/mavenrepo/</url>
+        </repository>
+    </repositories>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <configuration>
+                    <stylesheet>maven</stylesheet>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>2.4.2</version>
+            </plugin>
+        </plugins>
+    </reporting>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.4.3</version>
+                <configuration>
+                    <workingDirectory>target</workingDirectory>
+                    <systemProperties>
+                        <property>
+                            <name>log4j.configuration</name>
+                            <value>log4j.xml</value>
+                        </property>
+                    </systemProperties>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.0-beta-8</version>
+                <configuration>
+                    <arguments>-s /home/bryce/.m2/home_settings.xml</arguments>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>gaeupdate</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <version>1.1.1</version>
+                        <executions>
+                            <execution>
+                                <phase>install</phase>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <executable>/home/bryce/tools/appengine/bin/appcfg.sh</executable>
+                            <arguments>
+                                <argument>update</argument>
+                                <argument>target/${artifactId}-${version}</argument>
+                            </arguments>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.google.collections</groupId>
+            <artifactId>google-collections</artifactId>
+        </dependency>
+
+        <!-- Basic Logging -->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.14</version>
+        </dependency>
+
+        <!-- Basic dependencies for Unit Tests -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>5.8</version>
+            <classifier>jdk15</classifier>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.8.0</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Wave Robot API Dependency Versions -->
+            <dependency>
+                <groupId>com.google.wave</groupId>
+                <artifactId>wave-robot-api</artifactId>
+                <version>20090916</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.wave</groupId>
+                <artifactId>oauth</artifactId>
+                <version>20090617</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.wave</groupId>
+                <artifactId>json</artifactId>
+                <version>20090528</version>
+            </dependency>
+            <dependency>
+                <groupId>com.metaparadigm</groupId>
+                <artifactId>json-rpc</artifactId>
+                <version>1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.wave</groupId>
+                <artifactId>jsonrpc</artifactId>
+                <version>20090528</version>
+            </dependency>
+
+            <!-- GAE Dependency Versions -->
+            <dependency>
+                <groupId>com.google</groupId>
+                <artifactId>appengine-tools</artifactId>
+                <version>1.2.5</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google</groupId>
+                <artifactId>appengine-api-1.0-sdk</artifactId>
+                <version>1.2.5</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google</groupId>
+                <artifactId>appengine-api-labs</artifactId>
+                <version>1.2.5</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google</groupId>
+                <artifactId>appengine-local-runtime-shared</artifactId>
+                <version>1.2.5</version>
+            </dependency>
+
+            <!-- GAE ORM Dependency Versions -->
+            <dependency>
+                <groupId>javax.jdo</groupId>
+                <artifactId>jdo2-api</artifactId>
+                <version>2.3-eb</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.geronimo.specs</groupId>
+                <artifactId>geronimo-jpa_3.0_spec</artifactId>
+                <version>1.1.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.geronimo.specs</groupId>
+                <artifactId>geronimo-jta_1.1_spec</artifactId>
+                <version>1.1.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.datanucleus</groupId>
+                <artifactId>datanucleus-appengine</artifactId>
+                <version>1.0.3</version>
+            </dependency>
+            <dependency>
+                <groupId>org.datanucleus</groupId>
+                <artifactId>datanucleus-core</artifactId>
+                <version>1.1.5</version>
+            </dependency>
+            <dependency>
+                <groupId>org.datanucleus</groupId>
+                <artifactId>datanucleus-jpa</artifactId>
+                <version>1.1.5</version>
+            </dependency>
+
+            <!-- General Dependency Versions -->
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>servlet-api</artifactId>
+                <version>2.5</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.google.collections</groupId>
+                <artifactId>google-collections</artifactId>
+                <version>1.0-rc2</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>1.4</version>
+            </dependency>
+            <dependency>
+                <groupId>org.freemarker</groupId>
+                <artifactId>freemarker</artifactId>
+                <version>2.3.15</version>
+            </dependency>
+            <dependency>
+                <groupId>org.reflections</groupId>
+                <artifactId>reflections</artifactId>
+                <version>0.9.4</version>
+            </dependency>
+            <dependency>
+                <groupId>com.wavenz.robots</groupId>
+                <artifactId>com.wavenz.robots.util</artifactId>
+                <version>[0.0.0,0.1.0)</version>
+            </dependency>
+            <dependency>
+                <groupId>com.wavenz.robots</groupId>
+                <artifactId>com.wavenz.robots.mvc</artifactId>
+                <version>[0.0.0,0.1.0)</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>

@@ -1,0 +1,112 @@
+div.dialogue {
+    margin: 10px;
+    border: 2px solid #aa6644;
+    border-radius: 10px;
+    background-color: #eeddaa;
+    width: 470px;
+    color: #221111;
+}
+
+div.dialogue div.field {
+    margin: 10px;
+    height: 23px;
+    clear: left;
+}
+
+div.dialogue div.field label {
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 23px;
+    float: left;
+    width: 170px;
+}
+
+div.dialogue div.field input {
+    float: left;
+    margin-left: 10px;
+    width: 270px;
+}
+
+div.dialogue div.buttons {
+    background-color: #aa6644;
+    clear: left;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+div.dialogue div.buttons div.button {
+    width: 80px;
+    margin: 0 auto;
+}
+
+div.dialogue div.buttons div.button input {
+    background-color: #eeddaa;
+    border-color: #ddaa66;
+    width: 80px;
+}
+
+/* http://www.degraeve.com/color-palette/index.php?q=http://alaska.usgs.gov/science/biology/remote_sensing/images/sea_ice04.jpg,153a6f3164986e99c590b1dab2cfed,000790003ec51e8fff5bb2ff9ae7ff */
+/* http://www.degraeve.com/color-palette/index.php?q=http://www.hoax-slayer.com/images/lightning-volcano3.jpg,11100c5b433797664ed8bfbfc38f6a,17120a773818c44605fd7617ffd8d8 */
+/* http://www.degraeve.com/color-palette/index.php?q=http://www.geomatics.uottawa.ca/copland/AylesIceShelfOffshore30May2006Vincent3.jpg,728fb4a0b1cad7dde8a7b8cf587ba7,0c66d93d8aeb9ac7ffa5d2ffffffff */
+
+/* http://www.degraeve.com/color-palette/index.php?q=http://richard-seaman.com/Travel/Brunei/Storm.jpg,34525546696a6b9190b4c5c7598080,18666f2c868a40a7a65abdbbd2fdff */
+/* #335555 #446666 #669988 #bbcccc #558888 */
+/*div.dialogue {
+    border-color: #558888;
+    background-color: #bbcccc;
+    color: #335555;
+}
+div.dialogue div.buttons {
+    background-color: #558888;
+}
+div.dialogue div.buttons div.button input {
+    background-color: #bbcccc;
+    border-color: #446666;
+}*/
+
+/* http://www.degraeve.com/color-palette/index.php?q=http://i23.photobucket.com/albums/b378/gagnonstudio/2009/Brightlite.jpg,492c1aa75b24daa557f5d5a4dcbc8b,5f1300d91400ff9300ffc94bffeb6c */
+/* #443322 #aa5522 #ddaa55 #eeddaa #ddbb88 */
+/*div.dialogue {
+    border-color: #aa5522;
+    background-color: #eeddaa;
+    color: #443322;
+}
+div.dialogue div.buttons {
+    background-color: #aa5522;
+}
+div.dialogue div.buttons div.button input {
+    background-color: #ddbb88;
+    border-color: #ddaa55;
+}*/
+
+/* http://www.degraeve.com/color-palette/index.php?q=http://www.k5kj.net/SKYFIRE/StormShots/Storm01.jpg,263140406a9a6d8db0b3c7da508177,0f2c54004dc82aa78f368ae5b5eaff */
+/* #223344 #446699 #6688aa #bbccdd #558877 */
+div.dialogue {
+    border-color: #446699;
+    background-color: #bbccdd;
+    color: #223344;
+}
+div.dialogue div.buttons {
+    background-color: #446699;
+}
+div.dialogue div.buttons div.button input {
+    background-color: #bbccdd;
+    border-color: #446699;
+}
+
+/* http://www.degraeve.com/color-palette/index.php?q=http://media-cdn.tripadvisor.com/media/photo-s/00/1d/4b/af/miami-beach.jpg,1a0f0a5f382ba96549e4a962f5dba3,2204007b1700dc2b00ff8f00fffa69 */
+/* #221111 #663333 #aa6644 #ddaa66 #eeddaa */
+/*
+div.dialogue {
+    border-color: #aa6644;
+    background-color: #eeddaa;
+    color: #221111;
+}
+div.dialogue div.buttons {
+    background-color: #aa6644;
+}
+div.dialogue div.buttons div.button input {
+    background-color: #eeddaa;
+    border-color: #ddaa66;
+}
+*/

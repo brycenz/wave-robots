@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<w:robot xmlns:w="http://wave.google.com/extensions/robots/1.0">
+    <w:capabilities>
+        <w:capability name="WAVELET_PARTICIPANTS_CHANGED" content="true"/>
+        <w:capability name="FORM_BUTTON_CLICKED" content="true"/>
+    </w:capabilities>
+
+    <w:version>${deployment-version}</w:version>
+
+    <w:profile name="imapwave" imageurl="/images/imapwave.png" profileurl="/_wave/profile.xml" />
+
+    <!--
+        <w:crons>
+          <w:cron path="/_wave/robot/fetchupdate" timerinseconds="10" />
+        </w:crons>
+    -->
+</w:robot>

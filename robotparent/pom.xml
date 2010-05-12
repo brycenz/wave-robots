@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.wavenz.robots</groupId>
+        <artifactId>com.wavenz.robots.parent</artifactId>
+        <version>0.0.2</version>
+    </parent>
+
+    <artifactId>com.wavenz.robots.robotparent</artifactId>
+    <packaging>pom</packaging>
+    <version>0.0.3-SNAPSHOT</version>
+
+    <name>WaveNZ Robots Parent</name>
+
+    <prerequisites>
+        <maven>2.0.7</maven>
+    </prerequisites>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.0</version>
+                <configuration>
+                    <webResources>
+                        <resource>
+                            <directory>${project.basedir}/src/main/config</directory>
+                            <filtering>true</filtering>
+                        </resource>
+                        <resource>
+                            <directory>${project.basedir}/src/main/content</directory>
+                            <filtering>false</filtering>
+                        </resource>
+                    </webResources>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.datanucleus</groupId>
+                <artifactId>maven-datanucleus-plugin</artifactId>
+                <version>1.1.4</version>
+                <configuration>
+                    <mappingIncludes>**/data/*.class</mappingIncludes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>process-classes</phase>
+                        <goals>
+                            <goal>enhance</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.datanucleus</groupId>
+                        <artifactId>datanucleus-core</artifactId>
+                        <version>1.1.5</version>
+                        <scope>runtime</scope>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
+<!--
+            <plugin>
+                <groupId>org.reflections</groupId>
+                <artifactId>reflections-maven</artifactId>
+                <version>0.9.4</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>reflections</goal>
+                        </goals>
+                        <phase>process-classes</phase>
+                    </execution>
+                </executions>
+            </plugin>
+-->
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>gaeupdate</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <version>1.1.1</version>
+                        <executions>
+                            <execution>
+                                <phase>install</phase>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <executable>/home/bryce/tools/appengine/bin/appcfg.sh</executable>
+                            <arguments>
+                                <argument>update</argument>
+                                <argument>target/${artifactId}-${version}</argument>
+                            </arguments>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+    <dependencies>
+        <!-- Wave Dependencies -->
+        <dependency>
+            <groupId>com.google.wave</groupId>
+            <artifactId>wave-robot-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.wave</groupId>
+            <artifactId>json</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.wave</groupId>
+            <artifactId>jsonrpc</artifactId>
+        </dependency>
+
+        <!-- GAE Dependencies -->
+        <dependency>
+            <groupId>com.google</groupId>
+            <artifactId>appengine-tools</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google</groupId>
+            <artifactId>appengine-api-1.0-sdk</artifactId>
+        </dependency>
+
+        <!-- General Dependencies -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+        </dependency>
+<!--
+        <dependency>
+            <groupId>org.reflections</groupId>
+            <artifactId>reflections</artifactId>
+        </dependency>
+-->
+        <dependency>
+            <groupId>com.wavenz.robots</groupId>
+            <artifactId>com.wavenz.robots.util</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.wavenz.robots</groupId>
+            <artifactId>com.wavenz.robots.mvc</artifactId>
+        </dependency>
+    </dependencies>
+</project>
