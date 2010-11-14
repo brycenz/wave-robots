@@ -52,7 +52,6 @@
         <module>wavescript</module>
         <module>wavefriends</module>
         <module>ripplie</module>
-        <!--<module>imapwave</module>-->
     </modules>
 
 </project>
